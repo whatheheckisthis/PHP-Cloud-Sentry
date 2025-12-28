@@ -3,7 +3,8 @@ Real-Time Cryptographic Threat Intelligence for High-Density PHP Cloud Architect
 This documentation provides a comprehensive overview of the **PHP Cloud Sentry** suite, focusing on its newly derived **Triple-Proxy Architecture** and integration with **LangChain**, **Azure Data Lakes**, and **Kafka**.
 
 ---
-
+This repository intentionally exposes architecture, system design, and execution contracts only.
+Source code is excluded due to embedded credentials, active endpoints, and security posture.
 
 ## Project Overview
 
