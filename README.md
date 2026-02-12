@@ -1,5 +1,5 @@
 
-# PHP-Cloud-Sentry
+```PHP-Cloud-Sentry```
 
 **Applied Cryptographic Authentication & Multi-Tenant UEBA Control Framework for PHP Cloud Environments**
 *(Aligned to Essential Eight, ISO 27001, SOC 2, OWASP ASVS & SASE Access Principles)*
@@ -22,12 +22,17 @@ PHP-Cloud-Sentry is a multi-tenant PHP cloud security control framework designed
 
 **Disclaimer:** Source code implementation is withheld under OPSEC; the published document constitutes the deliverable.
 
+
+
 [Forensic-Readiness-Framework](https://docs.google.com/document/d/1DzVGH-1MAOu-hYLmAXz0xqxlotMq2mIb/edit?usp=drivesdk&ouid=105879626364275897033&rtpof=true&sd=true)
+
+[Forensic-Readiness-Framework-Controls](https://docs.google.com/document/d/1Ty9gDxJW0wezHqqNi8Sq7dAm8TrhZTRq/edit?usp=sharing&ouid=105879626364275897033&rtpof=true&sd=true)
+
 
  
 ---
 
-## Engineering Purpose & Scope
+## Purpose & Scope
 
 ### Engineering Purpose & Focus Areas
 
@@ -51,9 +56,9 @@ PHP-Cloud-Sentry is a multi-tenant PHP cloud security control framework designed
 
 ---
 
-# System Mapping Overview
+# System Overview
 
-## Logical Control Flow
+## Control Flow
 
 ```
 Client Request
@@ -126,7 +131,7 @@ Then:
 
 ---
 
-# Case Study Explainers
+# Case Study 
 
 ---
 
@@ -280,7 +285,7 @@ The architecture enforces **separation of hosting, routing, and security control
 
 ---
 
-## 5. Assurance Output Architecture
+## 5. Assurance Architecture
 
 ```
         Edge Proxy (Apache)
@@ -301,7 +306,7 @@ The architecture enforces **separation of hosting, routing, and security control
 
 ---
 
-# Governance & Assurance Positioning
+# Governance & Assurance 
 
 PHP-Cloud-Sentry is structured as a **control validation framework**, not merely a detection tool.
 
