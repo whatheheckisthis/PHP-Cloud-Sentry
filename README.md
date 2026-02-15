@@ -23,12 +23,6 @@ PHP-Cloud-Sentry is a multi-tenant PHP cloud security control framework designed
 **Disclaimer:** Source code implementation is withheld under OPSEC; the published document constitutes the deliverable.
 
 
-
-[Forensic-Readiness-Framework]()
-
-[Forensic-Readiness-Framework-Controls]()
-
-
  
 ---
 
