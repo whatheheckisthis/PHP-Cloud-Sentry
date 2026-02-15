@@ -1,0 +1,9 @@
+.git
+.github
+.gitignore
+README.md
+AGENTS.md
+tests
+bin
+*.log
+.DS_Store
