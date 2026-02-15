@@ -329,3 +329,42 @@ All outputs support **evidence-based assurance, regulatory review, and internal 
 ---
 
 
+
+---
+
+## Container Build and Runtime (Docker Hub PHP + Apache + Nginx)
+
+This repository includes a production-oriented container stack that:
+
+1. Builds a PHP image from Docker Hub (`php:8.3-apache`) using Docker Buildx.
+2. Enables multi-architecture builds (`linux/amd64`, `linux/arm64`) with QEMU emulation.
+3. Runs Apache/PHP behind a separate Nginx server (reverse proxy pattern).
+
+### Files
+
+- `docker/php-apache/Dockerfile`: PHP + Apache image definition.
+- `docker/nginx/default.conf`: Nginx reverse proxy to the PHP/Apache container.
+- `docker-compose.yml`: Runs both services together (`nginx` + `php-apache`).
+- `scripts/buildx-multiarch.sh`: Buildx + QEMU workflow script.
+
+### Build Multi-Arch Image with Buildx + QEMU
+
+```bash
+# Standard deployment-grade parameters
+export IMAGE_NAME="your-dockerhub-user/php-cloud-sentry"
+export IMAGE_TAG="8.3-apache"
+export PLATFORMS="linux/amd64,linux/arm64"
+export PUSH_IMAGE=true
+
+# Build and push multi-arch manifest/image to Docker Hub
+./scripts/buildx-multiarch.sh
+```
+
+### Run PHP/Apache Behind Nginx
+
+```bash
+docker compose up --build -d
+curl http://localhost:8080
+```
+
+Nginx listens on `localhost:8080` and proxies requests to the `php-apache` container over the internal Compose network.
