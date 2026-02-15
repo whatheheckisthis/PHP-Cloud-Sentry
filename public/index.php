@@ -25,7 +25,34 @@ $engine = new ControlEngine(
     new EventStream($eventLog),
 );
 
-$input = json_decode((string) file_get_contents('php://input'), true) ?? [];
+$rawBody = (string) file_get_contents('php://input');
+$input = json_decode($rawBody, true);
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    http_response_code(405);
+    header('Allow: POST');
+    header('Content-Type: application/json');
+    echo json_encode([
+        'allow' => false,
+        'reason' => 'method_not_allowed',
+    ], JSON_PRETTY_PRINT | JSON_THROW_ON_ERROR);
+
+    return;
+}
+
+if ($rawBody !== '' && json_last_error() !== JSON_ERROR_NONE) {
+    http_response_code(400);
+    header('Content-Type: application/json');
+    echo json_encode([
+        'allow' => false,
+        'reason' => 'invalid_json',
+    ], JSON_PRETTY_PRINT | JSON_THROW_ON_ERROR);
+
+    return;
+}
+
+$input = is_array($input) ? $input : [];
+
 $context = new RequestContext(
     token: (string) ($input['token'] ?? ''),
     resource: (string) ($input['resource'] ?? '/'),

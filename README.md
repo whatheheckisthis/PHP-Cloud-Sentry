@@ -13,6 +13,17 @@ PHP-Cloud-Sentry is currently focused on being a **practical reference implement
 
 Instead of framework-theory-only documentation, the project now prioritizes runnable PHP code that teams can execute, adapt, and extend.
 
+## Design Intent (Preserved)
+
+While the implementation is intentionally lightweight, it still aligns with the original control intent that drove earlier versions of this repository:
+
+- **Deterministic authentication controls** (ISO 27001 / SOC 2 CC6 style access assurance)
+- **Least-privilege enforcement** (OWASP ASVS access-control expectations)
+- **Tenant isolation guarantees** (cross-tenant movement prevention)
+- **Structured, append-only evidence output** (audit and monitoring readiness)
+
+This keeps the project practical for engineers while preserving the security-governance context that informed the design.
+
 ## What Exists Today
 
 - `TokenService`: issues and verifies signed tokens with expiration and region checks.
