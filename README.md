@@ -329,3 +329,40 @@ All outputs support **evidence-based assurance, regulatory review, and internal 
 ---
 
 
+
+---
+
+## Reference Implementation (This Repository)
+
+This repository now includes a functional, security-control-focused PHP codebase that demonstrates the architecture described above.
+
+### Included Modules
+
+- `TokenService`: deterministic HMAC-based token issuance/verification with TTL and region checks.
+- `AccessValidator`: scope-based authorization checks.
+- `TenantBoundaryValidator`: strict tenant isolation enforcement.
+- `BehaviorMonitor`: tenant-isolated UEBA risk scoring based on IP/region deviations.
+- `EventStream`: structured JSON event streaming to append-only log files.
+- `ControlEngine`: orchestration layer that grants/denies requests and emits evidence events.
+
+### Quick Start
+
+```bash
+php tests/run.php
+php bin/demo.php
+php -S 127.0.0.1:8080 -t public
+```
+
+Then POST JSON to `http://127.0.0.1:8080`:
+
+```json
+{
+  "token": "<issued_token>",
+  "resource": "/reports",
+  "method": "GET",
+  "tenant": "tenant-a",
+  "required_scopes": ["read:reports"],
+  "ip": "10.0.0.1",
+  "region": "AU"
+}
+```

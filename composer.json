@@ -1,0 +1,13 @@
+{
+  "name": "php-cloud-sentry/framework",
+  "description": "Deterministic multi-tenant authentication, access validation, and telemetry controls for PHP workloads.",
+  "type": "project",
+  "require": {
+    "php": ">=8.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "PHPCloudSentry\\": "src/"
+    }
+  }
+}
