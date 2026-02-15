@@ -2,29 +2,25 @@
 
 Deterministic, multi-tenant security controls for PHP workloads.
 
-## Current Direction
+## Current-Direction
 
 PHP-Cloud-Sentry is currently focused on being a **practical reference implementation** of core control paths:
 
-1. **Deterministic token verification** (HMAC signing + TTL + region validation)
-2. **Explicit authorization and tenant boundary enforcement**
-3. **Lightweight behavior/risk scoring (UEBA-style signals)**
-4. **Append-only JSON event evidence for auditability**
+- **Deterministic token verification** (HMAC signing + TTL + region validation)
+- **Explicit authorization and tenant boundary enforcement**
+- **Lightweight behavior/risk scoring (UEBA signals)**
+- **Append-only JSON event evidence for auditability**
 
-Instead of framework-theory-only documentation, the project now prioritizes runnable PHP code that teams can execute, adapt, and extend.
-
-## Design Intent (Preserved)
+## Design-Intent 
 
 While the implementation is intentionally lightweight, it still aligns with the original control intent that drove earlier versions of this repository:
 
-- **Deterministic authentication controls** (ISO 27001 / SOC 2 CC6 style access assurance)
+- **Deterministic authentication controls** (ISO 27001 / SOC 2 CC6 access assurance)
 - **Least-privilege enforcement** (OWASP ASVS access-control expectations)
 - **Tenant isolation guarantees** (cross-tenant movement prevention)
 - **Structured, append-only evidence output** (audit and monitoring readiness)
 
-This keeps the project practical for engineers while preserving the security-governance context that informed the design.
-
-## Design Spec Sheet (Control Mapping)
+## Control-Mapping
 
 The table below is the implementation-facing spec sheet for core controls and should be used as the canonical reference when extending policy, telemetry, or deployment controls.
 
@@ -50,7 +46,7 @@ The table below is the implementation-facing spec sheet for core controls and sh
 
 ## Developer Environment Setup (with operational context)
 
-Use this sequence when onboarding a local development environment. These steps are functional commands intended to mirror production control behavior as closely as possible.
+You can use this sequence when onboarding a local development environment. These steps are functional commands intended to mirror production control behavior as closely as possible.
 
 | Step | Command | Why it matters in dev + pre-prod |
 | --- | --- | --- |
@@ -110,9 +106,9 @@ Then POST JSON to `http://127.0.0.1:8080`:
 }
 ```
 
-## Deployment-Grade Execution Baseline
+## Deployment-Baseline
 
-For production-grade deployment posture, use these controls as a minimum baseline and tie implementation decisions back to the [Design Spec Sheet (Control Mapping)](#design-spec-sheet-control-mapping).
+For production-grade deployment posture, use these controls as a minimum baseline and tie implementation decisions back to the [controls-spec-sheet](https://docs.google.com/document/d/1cmx1ejCS08Qz06_fqj4_Rt1V2B-13OvG/edit?usp=sharing&ouid=105879626364275897033&rtpof=true&sd=true)
 
 | Deployment Domain | Deployment-grade expectation | Verification signal |
 | --- | --- | --- |
@@ -122,7 +118,7 @@ For production-grade deployment posture, use these controls as a minimum baselin
 | Evidence durability | Event stream forwarded to durable centralized logging/SIEM | End-to-end log delivery checks with retention policy confirmation |
 | Availability and rollback | Immutable image tags + controlled rollout/rollback strategy | Deployment pipeline logs, canary status, and rollback automation outputs |
 
-## Control Flow Graph
+## Control-Graph
 
 ```mermaid
 flowchart LR
@@ -136,14 +132,14 @@ flowchart LR
   E --> G[ControlEngine Decision + EventStream]
 ```
 
-## Example Directional Use Cases
+## Use-Cases
 
 - Block privilege escalation attempts when required scopes are missing.
 - Prevent lateral movement by rejecting tenant mismatch.
 - Flag suspicious behavior with incremental risk scores.
 - Generate machine-readable evidence for downstream SIEM/audit pipelines.
 
-## Ongoing Iterative Development (Industry-Aligned)
+## Iterative-Development 
 
 The roadmap below is intentionally framed as iterative program increments rather than one-off future work. Each increment references the design spec sheet to preserve control intent during delivery.
 
